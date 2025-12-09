@@ -23,3 +23,4 @@ PAYMENT_BANK=Юмани
 SUPPORT_TELEGRAM=@username
 SUPPORT_TEXT=Если у вас возникли вопросы, напишите администратору
 
+
