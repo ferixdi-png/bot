@@ -33,6 +33,9 @@ COPY . .
 # Set environment variables (can be overridden)
 ENV NODE_ENV=production
 
+# NOTE: No build step needed - this is a Python bot wrapped in Node.js
+# The bot runs directly via "npm start" which executes index.js -> run_bot.py
+
 # Start the bot
 CMD ["npm", "start"]
 
