@@ -15,11 +15,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 # Create symlink for python command (some scripts expect 'python' not 'python3')
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
-# Copy package files
+# Copy package files first (for better caching)
 COPY package*.json ./
 
 # Install Node.js dependencies
-RUN npm install
+RUN npm ci --only=production
 
 # Copy Python requirements
 COPY requirements.txt ./
@@ -29,9 +29,6 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy all application files
 COPY . .
-
-# Expose port (if needed)
-# EXPOSE 3000
 
 # Set environment variables (can be overridden)
 ENV NODE_ENV=production
